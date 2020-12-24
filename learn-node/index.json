@@ -1,6 +1,6 @@
 {
-  "title": "node-beginner",
-  "description": "",
+  "title": "简单的web应用-基于事件驱动与异步非阻塞IO",
+  "description": "利用最简单的例子讨论nodejs如何基于单线程实现高并发的web应用，其诞生采用异步非阻塞IO编程模型，实现的架构是基于事件驱动的架构，在分享中，我们一起探讨这种类型的web应用，并直击该种类型的web应用开发的适用场景和需要规避的技术陷阱。",
   "difficulty": "Beginner",
   "time": "20",
   "details": {
@@ -29,7 +29,10 @@
       "text": "finish.md"
     }
   },
-  "environment": {},
+  "environment": {
+    "hideintro": true,
+    "uilayout": "terminal"
+  },
   "backend": {
     "imageid": "nodejs:12"
   }
