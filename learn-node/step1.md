@@ -5,3 +5,5 @@
 <pre class="file" data-filename="helloworld.js" data-target="insert">
 console.log("Hello World");
 </pre>
+通过Node.js来执行：
+`node helloworld.js`{{execute interrupt}}
