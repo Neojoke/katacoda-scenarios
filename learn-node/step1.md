@@ -2,9 +2,11 @@
 好了，“废话”不多说了，马上开始我们第一个Node.js应用：“Hello World”。
 
 打开你最喜欢的编辑器，创建一个helloworld.js文件。我们要做就是向STDOUT输出“Hello World”，如下是实现该功能的代码：
+
 <pre class="file" data-filename="helloworld.js" data-target="insert">
 console.log("Hello World");
 </pre>
+
 通过Node.js来执行：
 
 `node helloworld.js`{{execute interrupt}}
@@ -19,10 +21,15 @@ console.log("Hello World");
 我们来把目标设定得简单点，不过也要够实际才行：
 
 用户可以通过浏览器使用我们的应用。
+
 当用户请求 http://domain/start 时，可以看到一个欢迎页面，页面上有一个文件上传的表单。
+
 用户可以选择一个图片并提交表单，随后文件将被上传到 http://domain/upload ，该页面完成上传后会把图片显示在页面上。
+
 进一步地说，在完成这一目标的过程中，我们不仅仅需要基础的代码而不管代码是否优雅。我们还要对此进行抽象，来寻找一种适合构建更为复杂的Node.js应用的方式。
+
 ## 应用不同模块分析
+
 我们来分解一下这个应用，为了实现上文的用例，我们需要实现哪些部分呢？
 
 * 我们需要提供Web页面，因此需要一个HTTP服务器
@@ -42,7 +49,9 @@ console.log("Hello World");
 现在我们就来开始实现之路，先从第一个部分--HTTP服务器着手。
 
 # 构建应用的模块
+
 ## 一个基础的HTTP服务器
+
 当我准备开始写我的第一个“真正的”Node.js应用的时候，我不但不知道怎么写Node.js代码，也不知道怎么组织这些代码。 
 我应该把所有东西都放进一个文件里吗？网上有很多教程都会教你把所有的逻辑都放进一个用Node.js写的基础HTTP服务器里。但是如果我想加入更多的内容，同时还想保持代码的可读性呢？
 
@@ -73,4 +82,3 @@ http.createServer(function(request, response) {
 接下来，打开浏览器访问 <https://[[HOST_SUBDOMAIN]]-8500-[[KATACODA_HOST]].environments.katacoda.com/> ，你会看到一个写着“Hello World”的网页。
 
 这很有趣，不是吗？让我们先来谈谈HTTP服务器的问题，把如何组织项目的事情先放一边吧，你觉得如何？我保证之后我们会解决那个问题的。
-
