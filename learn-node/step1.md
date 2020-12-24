@@ -82,3 +82,71 @@ http.createServer(function(request, response) {
 接下来，打开浏览器访问 <https://[[HOST_SUBDOMAIN]]-8888-[[KATACODA_HOST]].environments.katacoda.com/> ，你会看到一个写着“Hello World”的网页。
 
 这很有趣，不是吗？让我们先来谈谈HTTP服务器的问题，把如何组织项目的事情先放一边吧，你觉得如何？我保证之后我们会解决那个问题的。
+
+## 分析HTTP服务器
+
+那么接下来，让我们分析一下这个HTTP服务器的构成。
+
+第一行请求（require）Node.js自带的 http 模块，并且把它赋值给 http 变量。
+
+接下来我们调用http模块提供的函数： createServer 。这个函数会返回一个对象，这个对象有一个叫做 listen 的方法，这个方法有一个数值参数，指定这个HTTP服务器监听的端口号。
+
+咱们暂时先不管 http.createServer 的括号里的那个函数定义。
+
+我们本来可以用这样的代码来启动服务器并侦听8888端口：
+
+```javascript
+var http = require("http");
+
+var server = http.createServer();
+server.listen(8888);
+```
+
+这段代码只会启动一个侦听8888端口的服务器，它不做任何别的事情，甚至连请求都不会应答。
+
+最有趣（而且，如果你之前习惯使用一个更加保守的语言，比如PHP，它还很奇怪）的部分是 createServer() 的第一个参数，一个函数定义。
+
+实际上，这个函数定义是 createServer() 的第一个也是唯一一个参数。因为在JavaScript中，函数和其他变量一样都是可以被传递的。
+
+## 进行函数传递
+
+举例来说，你可以这样做：
+
+<pre class="file" data-filename="demo.js" data-target="insert">
+function say(word) {
+  console.log(word);
+}
+
+function execute(someFunction, value) {
+  someFunction(value);
+}
+
+execute(say, "Hello");
+</pre>
+
+请仔细阅读这段代码！在这里，我们把 say 函数作为execute函数的第一个变量进行了传递。这里传递的不是 say 的返回值，而是 say 本身！
+
+这样一来， say 就变成了execute 中的本地变量 someFunction ，execute可以通过调用 someFunction() （带括号的形式）来使用 say 函数。
+
+当然，因为 say 有一个变量， execute 在调用 someFunction 时可以传递这样一个变量。
+
+`node demo.js`{{execute interrupt}}
+
+我们可以，就像刚才那样，用它的名字把一个函数作为变量传递。但是我们不一定要绕这个“先定义，再传递”的圈子，我们可以直接在另一个函数的括号中定义和传递这个函数：
+
+<pre class="file" data-filename="demo.js" data-target="replace">
+function execute(someFunction, value) {
+  someFunction(value);
+}
+
+execute(function(word){ console.log(word) }, "Hello");
+</pre>
+
+
+我们在 execute 接受第一个参数的地方直接定义了我们准备传递给 execute 的函数。
+
+用这种方式，我们甚至不用给这个函数起名字，这也是为什么它被叫做 匿名函数 。
+
+`node demo.js`{{execute interrupt}}
+
+这是我们和我所认为的“进阶”JavaScript的第一次亲密接触，不过我们还是得循序渐进。现在，我们先接受这一点：在JavaScript中，一个函数可以作为另一个函数接收一个参数。我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。
