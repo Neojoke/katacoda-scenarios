@@ -239,6 +239,8 @@ exports.upload = upload;
 
 使用该模块，首先需要安装该模块。Node.js有它自己的包管理器，叫NPM。它可以让安装Node.js的外部模块变得非常方便。通过如下一条命令就可以完成该模块的安装：
 
+`npm init -y`{{execute interrupt}}
+
 `npm install formidable`{{execute interrupt}}
 
 如果终端输出如下内容：
