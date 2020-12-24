@@ -30,8 +30,8 @@
     }
   },
   "environment": {
-    "hideintro": true,
-    "uilayout": "terminal"
+    "hideintro": false,
+    "uilayout": "vscode-terminal-split"
   },
   "backend": {
     "imageid": "nodejs:12"
