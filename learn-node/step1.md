@@ -19,8 +19,8 @@ console.log("Hello World");
 我们来把目标设定得简单点，不过也要够实际才行：
 
 用户可以通过浏览器使用我们的应用。
-当用户请求http://domain/start时，可以看到一个欢迎页面，页面上有一个文件上传的表单。
-用户可以选择一个图片并提交表单，随后文件将被上传到http://domain/upload，该页面完成上传后会把图片显示在页面上。
+当用户请求 http://domain/start 时，可以看到一个欢迎页面，页面上有一个文件上传的表单。
+用户可以选择一个图片并提交表单，随后文件将被上传到 http://domain/upload ，该页面完成上传后会把图片显示在页面上。
 进一步地说，在完成这一目标的过程中，我们不仅仅需要基础的代码而不管代码是否优雅。我们还要对此进行抽象，来寻找一种适合构建更为复杂的Node.js应用的方式。
 ## 应用不同模块分析
 我们来分解一下这个应用，为了实现上文的用例，我们需要实现哪些部分呢？
@@ -55,6 +55,7 @@ console.log("Hello World");
 在我的印象里，把主文件叫做index.js或多或少是个标准格式。把服务器模块放进叫server.js的文件里则很好理解。
 
 让我们先从服务器模块开始。在你的项目的根目录下创建一个叫server.js的文件，并写入以下代码：
+
 <pre class="file" data-filename="helloworld.js" data-target="insert">
 var http = require("http");
 
@@ -64,9 +65,12 @@ http.createServer(function(request, response) {
   response.end();
 }).listen(8888);
 </pre>
+
 搞定！你刚刚完成了一个可以工作的HTTP服务器。为了证明这一点，我们来运行并且测试这段代码。首先，用Node.js执行你的脚本：
+
 `node server.js`{{execute interrupt}}
-接下来，打开浏览器访问<https://[[HOST_SUBDOMAIN]]-8500-[[KATACODA_HOST]].environments.katacoda.com/>，你会看到一个写着“Hello World”的网页。
+
+接下来，打开浏览器访问 <https://[[HOST_SUBDOMAIN]]-8500-[[KATACODA_HOST]].environments.katacoda.com/> ，你会看到一个写着“Hello World”的网页。
 
 这很有趣，不是吗？让我们先来谈谈HTTP服务器的问题，把如何组织项目的事情先放一边吧，你觉得如何？我保证之后我们会解决那个问题的。
 
