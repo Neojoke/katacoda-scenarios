@@ -95,7 +95,7 @@ http.createServer(function(request, response) {
 
 我们本来可以用这样的代码来启动服务器并侦听8888端口：
 
-```javascript
+```
 var http = require("http");
 
 var server = http.createServer();
@@ -150,3 +150,8 @@ execute(function(word){ console.log(word) }, "Hello");
 `node demo.js`{{execute interrupt}}
 
 这是我们和我所认为的“进阶”JavaScript的第一次亲密接触，不过我们还是得循序渐进。现在，我们先接受这一点：在JavaScript中，一个函数可以作为另一个函数接收一个参数。我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。
+
+# 函数传递是如何让HTTP服务器工作的
+
+带着这些知识，我们再来看看我们简约而不简单的HTTP服务器：
+
