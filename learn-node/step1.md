@@ -65,7 +65,7 @@ console.log("Hello World");
 
 让我们先从服务器模块开始。在你的项目的根目录下创建一个叫server.js的文件，并写入以下代码：
 
-<pre class="file" data-filename="helloworld.js" data-target="insert">
+<pre class="file" data-filename="server.js" data-target="insert">
 var http = require("http");
 
 http.createServer(function(request, response) {
